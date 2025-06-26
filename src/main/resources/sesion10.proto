@@ -1,0 +1,30 @@
+syntax = "proto3";
+
+
+option java_package = "grpc";
+option java_outer_classname = "TramitadorOuterClass";
+
+
+service Tramitador {
+ rpc tramitar (PedidoRequest) returns (PedidoReply) {}
+}
+
+
+message PedidoRequest {
+	string idPedido = 1;
+	string direccion = 2;	// Dirección del cliente
+	int32 restaurante = 3;	// Restaurante del pedido
+	repeated ProductoRequest productos = 4;
+}
+
+
+message ProductoRequest {
+	string id = 1;
+	int32 cantidad = 2;
+	double precio = 3;
+}
+
+
+message PedidoReply {
+	string resultado = 1; // resultado de la operación
+}
